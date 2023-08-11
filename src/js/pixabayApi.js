@@ -6,7 +6,7 @@ const API_KEY = '38739030-af5614da71e4107ffbd422430';
 axios.defaults.baseURL = 'https://pixabay.com/api/';
 axios.interceptors.response.use(
   response => {
-    console.log(response);
+    // console.log(response);
     return response;
   },
   error => {
