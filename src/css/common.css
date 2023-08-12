@@ -10,21 +10,66 @@ p {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 25px;
 }
 
 .search-form input {
   width: 20%;
-  border-radius: 5%;
+  border: none;
   padding: 8px 10px;
 }
 
 .search-form button {
+  background-color: #fff;
+  border: none;
+  padding: 8px 10px;
+}
+
+.search-form button:hover {
+  background-color: rgb(7, 109, 16);
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.gallery,
+.info {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .gallery {
+  justify-content: center;
+}
+
+.gallery_link {
+  margin-top: 20px;
+  margin-left: 20px;
+  min-width: 320px;
+  height: auto;
+  flex-basis: calc((100% - 80px) / 4);
+  border: none;
+  overflow: hidden;
+}
+
+.gallery-item_img {
+  display: block;
+  /* max-width: 320px;
+  height: auto; */
 }
 
 .load-more {
   display: none;
+}
+
+.info {
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.info-item:not(:first-child) {
+  margin-left: 5px;
 }
