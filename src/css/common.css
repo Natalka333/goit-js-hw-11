@@ -19,7 +19,6 @@ p {
 .gallery_link {
   margin: auto;
   margin-bottom: 10px;
-  /* flex-basis: calc(25% - 20px); */
   border: none;
   overflow: hidden;
 }
@@ -46,7 +45,7 @@ p {
 
 @media screen and (min-width: 1200px) {
   .gallery_link {
-    flex-basis: calc((100% - 80px) / 4);
+    flex-basis: calc((100% - 60px) / 4);
   }
 }
 .search-form {
@@ -83,13 +82,6 @@ p {
   justify-content: space-evenly;
   display: flex;
 }
-
-/* @media screen and (min-width: 768px) {
-  .gallery,
-  .info {
-    flex-direction: column;
-  }
-} */
 
 .gallery_img {
   display: block;
