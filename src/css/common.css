@@ -10,9 +10,31 @@ p {
   margin: 0;
 }
 
+.container {
+  max-width: 428px;
+  padding: 20px 15px;
+  margin: auto;
+}
+
+.gallery_link {
+  margin: auto;
+  margin-bottom: 10px;
+  /* flex-basis: calc(25% - 20px); */
+  border: none;
+  overflow: hidden;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
+    .gallery_link {
+      flex-basis: calc((100% - 40px) / 3);
+    }
   }
 }
 
@@ -22,6 +44,11 @@ p {
   }
 }
 
+@media screen and (min-width: 1200px) {
+  .gallery_link {
+    flex-basis: calc((100% - 80px) / 4);
+  }
+}
 .search-form {
   width: 100%;
   display: flex;
@@ -44,29 +71,11 @@ p {
   background-color: rgb(150, 11, 192);
 }
 
-.container {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
-
 .gallery,
 .info {
   flex-wrap: wrap;
   display: flex;
-}
-
-.gallery {
   justify-content: center;
-}
-
-.gallery_link {
-  margin-top: 20px;
-  margin-left: 20px;
-  flex-basis: calc((100% - 80px) / 4);
-  border: none;
-  overflow: hidden;
 }
 
 .photo-card {
@@ -76,10 +85,12 @@ p {
 }
 
 /* @media screen and (min-width: 768px) {
-  .container {
-    flex-wrap: nowrap;
+  .gallery,
+  .info {
+    flex-direction: column;
   }
 } */
+
 .gallery_img {
   display: block;
   height: 30vh;
