@@ -1,5 +1,25 @@
 body {
-  background-color: rgb(141, 238, 51);
+  background-color: rgb(136, 235, 45);
+}
+
+p {
+  margin: 0;
+}
+
+.search-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+
+.search-form input {
+  width: 20%;
+  border-radius: 5%;
+  padding: 8px 10px;
+}
+
+.search-form button {
 }
 
 .gallery {
