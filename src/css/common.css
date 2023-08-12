@@ -1,9 +1,25 @@
 body {
-  background-color: rgb(136, 235, 45);
+  background-color: rgb(233, 145, 236);
+}
+
+a {
+  text-decoration: none;
 }
 
 p {
   margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1158px;
+  }
 }
 
 .search-form {
@@ -25,7 +41,7 @@ p {
 }
 
 .search-form button:hover {
-  background-color: rgb(7, 109, 16);
+  background-color: rgb(150, 11, 192);
 }
 
 .container {
@@ -37,8 +53,8 @@ p {
 
 .gallery,
 .info {
-  display: flex;
   flex-wrap: wrap;
+  display: flex;
 }
 
 .gallery {
@@ -48,17 +64,26 @@ p {
 .gallery_link {
   margin-top: 20px;
   margin-left: 20px;
-  min-width: 320px;
-  height: auto;
-  flex-basis: calc((100% - 40px) / 3);
+  flex-basis: calc((100% - 80px) / 4);
   border: none;
   overflow: hidden;
 }
 
-.gallery-item_img {
+.photo-card {
+  flex-direction: column;
+  justify-content: space-evenly;
+  display: flex;
+}
+
+/* @media screen and (min-width: 768px) {
+  .container {
+    flex-wrap: nowrap;
+  }
+} */
+.gallery_img {
   display: block;
-  /* max-width: 320px;
-  height: auto; */
+  height: 30vh;
+  object-fit: cover;
 }
 
 .load-more {
@@ -68,6 +93,15 @@ p {
 .info {
   padding: 10px;
   justify-content: space-around;
+}
+
+.info-item {
+  color: #650d8d;
+  flex-direction: column;
+  align-items: center;
+  font-size: smaller;
+
+  display: flex;
 }
 
 .info-item:not(:first-child) {
