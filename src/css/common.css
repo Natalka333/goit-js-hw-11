@@ -50,7 +50,7 @@ p {
   margin-left: 20px;
   min-width: 320px;
   height: auto;
-  flex-basis: calc((100% - 80px) / 4);
+  flex-basis: calc((100% - 40px) / 3);
   border: none;
   overflow: hidden;
 }
