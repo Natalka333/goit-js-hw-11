@@ -101,7 +101,7 @@ p {
   background-color: rgb(150, 11, 192);
 }
 
-.load-more {
+.unvisible {
   display: none;
 }
 
