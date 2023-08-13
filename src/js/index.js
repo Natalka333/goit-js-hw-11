@@ -9,8 +9,9 @@ const loadMoreBtnEl = document.querySelector('.load-more');
 
 let query = '';
 let page = 1;
-let simplelightbox;
 const perPage = 40;
+
+let simplelightbox;
 
 searchFormEl.addEventListener('submit', handleSearchForm);
 
@@ -59,7 +60,6 @@ function handleSearchForm(event) {
   event.preventDefault();
   page = 1;
   query = event.currentTarget.elements.searchQuery.value.trim();
-  // console.log(query);
   galleryEl.innerHTML = '';
 
   if (query === '') {
@@ -80,29 +80,50 @@ function handleSearchForm(event) {
       } else {
         renderGallery(data.hits);
         simplelightbox = new Simplelightbox('.gallery a').refresh();
-
         Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
       }
-      loadMoreBtnEl.classList.remove('unvisible');
+      // loadMoreBtnEl.classList.remove('unvisible');
     })
     .catch(error => console.log(error))
     .finally(() => {
       searchFormEl.reset();
-      loadMoreBtnEl.classList.add('unvisible');
+      // loadMoreBtnEl.classList.add('unvisible');
     });
 }
 
-// function loadMoreImg() {
+const handleLoadMoreImg = () => {
+  page += 1;
+
+  fetchImages(query, page, perPage)
+    .then(data => {
+      console.log(data);
+
+      if (data.page === data.totalHits) {
+        loadMoreBtnEl.classList.add('unvisible');
+      }
+      renderGallery(data.hits);
+      simplelightbox = new Simplelightbox('.gallery a').refresh();
+    })
+    .catch(error => console.log(error));
+};
+
+loadMoreBtnEl.addEventListener('click', handleLoadMoreImg);
+// function handleLoadMoreImg() {
 //   page += 1;
 //   simplelightbox.destroy();
+//   if (data.totalPage < 1) {
+//     loadMoreBtnEl.classList.add('unvisible');
+//   }
 
 //   fetchImages(query, page, perPage)
 //     .then(data => {
 //       renderGallery(data.hits);
 //       simplelightbox = new Simplelightbox('.gallery a').refresh();
+
 //       // loadMoreBtnEl.classList.remove('unvisible');
 
 //       const totalPage = Math.ceil(data.totalHits / perPage);
+
 //       //  total-всего картинок на ресурсе totalHits-єто сколько нам отдает API(500 картинок)
 //       if (page > totalPage) {
 //         Notiflix.Notify.failure(
@@ -110,9 +131,8 @@ function handleSearchForm(event) {
 //         );
 //       }
 //     })
-//     .catch(error => console.log(error));
-// }
-
-// function showLoad() {
-// 	if ()
+//     .catch(error => console.log(error))
+//     .finally(() => {
+//       loadMoreBtnEl.classList.add('unvisible');
+//     });
 // }

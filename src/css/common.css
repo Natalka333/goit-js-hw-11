@@ -89,9 +89,9 @@ p {
   object-fit: cover;
 }
 
-.load-more {
+/* .load-more {
   display: none;
-}
+} */
 
 .info {
   padding: 10px;

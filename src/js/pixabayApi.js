@@ -24,3 +24,20 @@ async function fetchImages(query, page, perPage) {
 }
 
 export { fetchImages };
+
+// async function fetchImages() {
+//   page = 1;
+//   query = null;
+
+//   const searchParams = new SearchParams({
+//     query: this.query,
+//     page: this.page,
+//     per_page: 40,
+//     image_type: photo,
+//     orientation: horizontal,
+//     safesearch: true,
+//   });
+//   const response = await axios.get(`?key=${API_KEY}&${searchParams}`);
+
+//   return response.data;
+// }
