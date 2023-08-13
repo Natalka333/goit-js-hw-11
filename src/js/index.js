@@ -108,6 +108,7 @@ const handleLoadMoreImg = () => {
 };
 
 loadMoreBtnEl.addEventListener('click', handleLoadMoreImg);
+
 // function handleLoadMoreImg() {
 //   page += 1;
 //   simplelightbox.destroy();
