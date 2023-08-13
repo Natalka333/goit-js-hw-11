@@ -5,6 +5,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const searchFormEl = document.querySelector('.search-form');
 const galleryEl = document.querySelector('.gallery');
+const loadMoreBtnEl = document.querySelector('.load-more');
 
 let query = '';
 let page = 1;
@@ -68,6 +69,10 @@ function handleSearchForm(event) {
 
   fetchImages(query, page, perPage)
     .then(data => {
+      // console.log(data);
+      // console.log(data.totalHits); 500 которіе відает мой АРІ
+      // console.log(data.total); всего картинок по єтой теме
+      // console.log(data.hits); обьект из первіх 40 (perPage)
       if (data.totalHits === 0) {
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
@@ -75,31 +80,39 @@ function handleSearchForm(event) {
       } else {
         renderGallery(data.hits);
         simplelightbox = new Simplelightbox('.gallery a').refresh();
+
         Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
       }
+      loadMoreBtnEl.classList.remove('unvisible');
     })
     .catch(error => console.log(error))
     .finally(() => {
       searchFormEl.reset();
+      loadMoreBtnEl.classList.add('unvisible');
     });
 }
 
-function loadMoreImg() {
-  page += 1;
-  simplelightbox.destroy();
+// function loadMoreImg() {
+//   page += 1;
+//   simplelightbox.destroy();
 
-  fetchImages(query, page, perPage)
-    .then(data => {
-      renderGallery(data.hits);
-      simplelightbox = new Simplelightbox('.gallery a').refresh();
+//   fetchImages(query, page, perPage)
+//     .then(data => {
+//       renderGallery(data.hits);
+//       simplelightbox = new Simplelightbox('.gallery a').refresh();
+//       // loadMoreBtnEl.classList.remove('unvisible');
 
-      const totalPage = Math.ceil(data.totalHits / perPage);
+//       const totalPage = Math.ceil(data.totalHits / perPage);
+//       //  total-всего картинок на ресурсе totalHits-єто сколько нам отдает API(500 картинок)
+//       if (page > totalPage) {
+//         Notiflix.Notify.failure(
+//           "We're sorry, but you've reached the end of search results."
+//         );
+//       }
+//     })
+//     .catch(error => console.log(error));
+// }
 
-      if (page > totalPage) {
-        Notiflix.Notify.failure(
-          "We're sorry, but you've reached the end of search results."
-        );
-      }
-    })
-    .catch(error => console.log(error));
-}
+// function showLoad() {
+// 	if ()
+// }
