@@ -89,9 +89,21 @@ p {
   object-fit: cover;
 }
 
-/* .load-more {
+.load-more {
+  margin: 0 auto;
+  display: block;
+  padding: 8px 10px;
+  /* color: #650d8d; */
+  border: none;
+}
+
+.load-more:hover {
+  background-color: rgb(150, 11, 192);
+}
+
+.load-more {
   display: none;
-} */
+}
 
 .info {
   padding: 10px;

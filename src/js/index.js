@@ -58,6 +58,7 @@ function renderGallery(images) {
 
 function handleSearchForm(event) {
   event.preventDefault();
+
   page = 1;
   query = event.currentTarget.elements.searchQuery.value.trim();
   galleryEl.innerHTML = '';
@@ -69,10 +70,6 @@ function handleSearchForm(event) {
 
   fetchImages(query, page, perPage)
     .then(data => {
-      // console.log(data);
-      // console.log(data.totalHits); 500 которіе відает мой АРІ
-      // console.log(data.total); всего картинок по єтой теме
-      // console.log(data.hits); обьект из первіх 40 (perPage)
       if (data.totalHits === 0) {
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.'
@@ -80,14 +77,15 @@ function handleSearchForm(event) {
       } else {
         renderGallery(data.hits);
         simplelightbox = new Simplelightbox('.gallery a').refresh();
+
         Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
       }
-      // loadMoreBtnEl.classList.remove('unvisible');
+      loadMoreBtnEl.classList.remove('unvisible');
     })
     .catch(error => console.log(error))
     .finally(() => {
       searchFormEl.reset();
-      // loadMoreBtnEl.classList.add('unvisible');
+      loadMoreBtnEl.classList.add('unvisible');
     });
 }
 
@@ -108,32 +106,3 @@ const handleLoadMoreImg = () => {
 };
 
 loadMoreBtnEl.addEventListener('click', handleLoadMoreImg);
-
-// function handleLoadMoreImg() {
-//   page += 1;
-//   simplelightbox.destroy();
-//   if (data.totalPage < 1) {
-//     loadMoreBtnEl.classList.add('unvisible');
-//   }
-
-//   fetchImages(query, page, perPage)
-//     .then(data => {
-//       renderGallery(data.hits);
-//       simplelightbox = new Simplelightbox('.gallery a').refresh();
-
-//       // loadMoreBtnEl.classList.remove('unvisible');
-
-//       const totalPage = Math.ceil(data.totalHits / perPage);
-
-//       //  total-всего картинок на ресурсе totalHits-єто сколько нам отдает API(500 картинок)
-//       if (page > totalPage) {
-//         Notiflix.Notify.failure(
-//           "We're sorry, but you've reached the end of search results."
-//         );
-//       }
-//     })
-//     .catch(error => console.log(error))
-//     .finally(() => {
-//       loadMoreBtnEl.classList.add('unvisible');
-//     });
-// }
