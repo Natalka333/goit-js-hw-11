@@ -70,7 +70,6 @@ function handleSearchForm(event) {
 
   fetchImages(query, page, perPage)
     .then(data => {
-      console.log(data);
       if (data.hits.length * page === data.totalHits) {
         loadMoreBtnEl.classList.add('unvisible');
       } else {
@@ -98,7 +97,6 @@ const handleLoadMoreImg = () => {
 
   fetchImages(query, page, perPage)
     .then(data => {
-      console.log(data);
       if (perPage * page >= data.totalHits) {
         loadMoreBtnEl.classList.add('unvisible');
         Notiflix.Notify.success(
